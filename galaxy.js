@@ -1,14 +1,14 @@
-/* Pixcel Galaxy - a standalone, configurable version of fxGalaxy from the CodeBeats static/fx.js (lines 19-55).
+/* Pixell Galaxy - a standalone, configurable version of fxGalaxy from the CodeBeats static/fx.js (lines 19-55).
    With the default options it draws exactly what the original draws; every hard-coded number became an option.
 
    Usage:
-     const g = PixcelGalaxy(canvas, {n: 380, from: "disc", to: "galaxy"});
+     const g = PixellGalaxy(canvas, {n: 380, from: "disc", to: "galaxy"});
      g.set({arms: 5, palette: "fire"});   // change anything while it runs
      g.state();                           // {mix, spd, rot, fps, n}
      g.destroy();                         // stop the loop and remove listeners
 
    Add your own shape:
-     PixcelGalaxy.shapes.myShape = (p, rot, o, out) => { out.x = ...; out.y = ...; out.z = 0; };
+     PixellGalaxy.shapes.myShape = (p, rot, o, out) => { out.x = ...; out.y = ...; out.z = 0; };
 
    Full explanation (Persian): docs.html */
 (function (global) {
@@ -38,7 +38,7 @@ const DEFAULTS = {
   diffRot: 1.5,         // inner stars turn faster than outer ones         (original: rot*(1.5/(gr+.3)))
   radiusBias: .65,      // <1 pushes stars outwards, >1 packs the centre   (original: pow(random, .65))
   // text shape
-  text: "PIXCEL",
+  text: "Pixell",
   textFont: "800 200px system-ui, Tahoma, sans-serif",
   shape: "human-face-front", // drawing used by the image shape
   petals: 6,            // number of flower petals (also used by the docs demo)
@@ -312,7 +312,7 @@ const clamp01 = v => v < 0 ? 0 : v > 1 ? 1 : v;
 const hexRGB = h => { h = h.replace("#", ""); if (h.length === 3) h = h.replace(/./g, "$&$&"); const n = parseInt(h, 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
 
 /* ---------------------------------------------------------------- engine */
-function PixcelGalaxy(cv, opts) {
+function PixellGalaxy(cv, opts) {
   const o = Object.assign({}, DEFAULTS, opts || {});
   const ctx = cv.getContext("2d"), P = [];
   const a = { x: 0, y: 0, z: 0 }, b = { x: 0, y: 0, z: 0 }, tmp = { x: 0, y: 0, z: 0 };
@@ -471,8 +471,8 @@ function PixcelGalaxy(cv, opts) {
   return api;
 }
 
-PixcelGalaxy.shapes = shapes;
-PixcelGalaxy.palettes = PALETTES;
-PixcelGalaxy.defaults = DEFAULTS;
-global.PixcelGalaxy = PixcelGalaxy;
+PixellGalaxy.shapes = shapes;
+PixellGalaxy.palettes = PALETTES;
+PixellGalaxy.defaults = DEFAULTS;
+global.PixellGalaxy = PixellGalaxy;
 })(window);

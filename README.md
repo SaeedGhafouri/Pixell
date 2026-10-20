@@ -33,7 +33,7 @@ Copy `galaxy.js` into your site and load it before the script that initializes t
 <script src="galaxy.js"></script>
 <script>
   const canvas = document.getElementById("particles");
-  const galaxy = PixcelGalaxy(canvas, {
+  const galaxy = PixellGalaxy(canvas, {
     n: 900,
     from: "disc",
     to: "sphere",
@@ -46,7 +46,7 @@ Copy `galaxy.js` into your site and load it before the script that initializes t
 </script>
 ```
 
-`PixcelGalaxy(canvas, options)` accepts a real `<canvas>` element and an optional options object. Defaults are exposed as `PixcelGalaxy.defaults`. The default setup morphs from `disc` to `galaxy` on hover with 380 particles.
+`PixellGalaxy(canvas, options)` accepts a real `<canvas>` element and an optional options object. Defaults are exposed as `PixellGalaxy.defaults`. The default setup morphs from `disc` to `galaxy` on hover with 380 particles.
 
 ### Faces, text, and shapes
 
@@ -70,7 +70,7 @@ When either side is `image`, the `shape` option selects its portrait. If both si
 
 ## Common options
 
-Pass these to `PixcelGalaxy(canvas, options)` or update them later using `galaxy.set({ ... })`:
+Pass these to `PixellGalaxy(canvas, options)` or update them later using `galaxy.set({ ... })`:
 
 | Option | Default | Description |
 | --- | --- | --- |
@@ -83,12 +83,12 @@ Pass these to `PixcelGalaxy(canvas, options)` or update them later using `galaxy
 | `mouse` | `"repel"` | Pointer interaction: `"repel"`, `"attract"`, `"swirl"`, or `"off"`. |
 | `radius` | `0.44` | Shape radius as a fraction of the smaller canvas dimension. |
 | `trail`, `glow` | `0`, `true` | Motion-trail strength and central glow toggle. |
-| `text`, `textFont` | `"PIXCEL"`, system font | Content and font when using the `text` shape. |
+| `text`, `textFont` | `"Pixell"`, system font | Content and font when using the `text` shape. |
 | `shape` | `"human-face-front"` | Portrait drawing when using the `image` shape. |
 | `petals` | `6` | Petal count for the `flower` shape. |
 | `host` | `null` | Optional element for pointer events instead of the canvas; set it when creating the instance. |
 
-Other controls, including `ease`, `follow`, `order`, `stagger`, `speed`, `colorMode`, and `clickShock`, are defined in `PixcelGalaxy.defaults` in `galaxy.js` and exposed in the playground. The playground's background color (`bg`) is a UI-only setting, not an engine option; set your page's background with CSS.
+Other controls, including `ease`, `follow`, `order`, `stagger`, `speed`, `colorMode`, and `clickShock`, are defined in `PixellGalaxy.defaults` in `galaxy.js` and exposed in the playground. The playground's background color (`bg`) is a UI-only setting, not an engine option; set your page's background with CSS.
 
 ## JavaScript API
 
@@ -103,14 +103,14 @@ galaxy.scramble();                             // Scatter particles before they 
 galaxy.destroy();                              // Stop animation and remove listeners.
 ```
 
-Call `destroy()` when disposing of a canvas in a dynamic page. Each instance has its own particle list and animation loop. `PixcelGalaxy.shapes`, `PixcelGalaxy.palettes`, and `PixcelGalaxy.defaults` are also exposed on the global constructor.
+Call `destroy()` when disposing of a canvas in a dynamic page. Each instance has its own particle list and animation loop. `PixellGalaxy.shapes`, `PixellGalaxy.palettes`, and `PixellGalaxy.defaults` are also exposed on the global constructor.
 
 ### Add your own shape
 
 Register the shape after loading `galaxy.js` and before creating the instance. A shape receives a particle (`p`), current rotation (`rot`), options (`o`), and a reusable output object (`out`). Set `out.x`, `out.y`, and `out.z` every call; coordinates are approximately in the range -1 to 1, and `z: 0` makes a flat shape.
 
 ```js
-PixcelGalaxy.shapes.diamond = (p, rot, o, out) => {
+PixellGalaxy.shapes.diamond = (p, rot, o, out) => {
   const angle = p.u * Math.PI * 2;
   const scale = p.r2 < 0.7 ? 1 : Math.sqrt(p.r3);
   out.x = Math.cos(angle + rot * 0.3) * scale * 0.8;
@@ -118,7 +118,7 @@ PixcelGalaxy.shapes.diamond = (p, rot, o, out) => {
   out.z = 0;
 };
 
-const galaxy = PixcelGalaxy(document.getElementById("particles"), {
+const galaxy = PixellGalaxy(document.getElementById("particles"), {
   to: "diamond",
   trigger: "auto"
 });

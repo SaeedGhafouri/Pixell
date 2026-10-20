@@ -3,7 +3,7 @@
 (function () {
 "use strict";
 const $ = id => document.getElementById(id);
-const D = PixcelGalaxy.defaults;
+const D = PixellGalaxy.defaults;
 const SHAPES = { disc: "دایره‌ی آفتابگردانی", galaxy: "کهکشان مارپیچی", ring: "حلقه", sphere: "کره‌ی سه‌بعدی", heart: "قلب", star: "ستاره", grid: "شبکه", helix: "مارپیچ DNA", text: "متن", triangle: "مثلث", square: "مربع", hexagon: "شش‌ضلعی", cube: "مکعب", pyramid: "هرم", torus: "توروس", spiral: "مارپیچ", flower: "گل", mandala: "ماندالا", infinity: "بی‌نهایت", butterfly: "پروانه", atom: "اتم", crescent: "هلال ماه", wave: "موج سینوسی", image: "چهره و تصویر خطی" };
 const has = (c, s) => c.from === s || c.to === s;
 
@@ -70,7 +70,7 @@ const PRESETS = {
   "سیاه‌چاله": { n: 1600, from: "ring", to: "galaxy", arms: 5, twist: 10, scatter: .4, radiusBias: 1.4, diffRot: 3.5, flatten: .7, speed: .006, mouse: "swirl", mouseRadius: 140, mouseForce: 30, trail: .82, palette: "fire", colorMode: "radius", trigger: "always", glowStrength: .5 },
   "کره": { n: 1400, to: "sphere", tilt: -.35, palette: "aurora", colorMode: "angle", trigger: "auto", autoPeriod: 4, sizeMin: .4, sizeRange: 1.4, stagger: 1.2 },
   "قلب": { n: 900, to: "heart", palette: "nebula", colorMode: "random", trigger: "auto", autoPeriod: 3, order: "edge", stagger: 1.5, sizeMin: .6, clickShock: true },
-  "متن": { n: 2600, to: "text", text: "PIXCEL", palette: "codebeats", trigger: "auto", autoPeriod: 4, order: "sweep", stagger: 1.4, sizeMin: .5, sizeRange: 1, mouseRadius: 80, mouseForce: 22, clickShock: true },
+  "متن": { n: 2600, to: "text", text: "Pixell", palette: "codebeats", trigger: "auto", autoPeriod: 4, order: "sweep", stagger: 1.4, sizeMin: .5, sizeRange: 1, mouseRadius: 80, mouseForce: 22, clickShock: true },
   "DNA": { n: 900, from: "sphere", to: "helix", palette: "rainbow", colorMode: "cycle", trigger: "auto", autoPeriod: 4, speed: .004, stagger: 1, order: "sweep" },
   "ستاره‌ی دنباله‌دار": { n: 700, from: "star", to: "galaxy", arms: 4, twist: 7, speed: .012, trail: .9, palette: "mono", colorMode: "random", trigger: "click", clickShock: true },
   "شبکه": { n: 900, from: "grid", to: "disc", palette: "aurora", colorMode: "radius", trigger: "auto", order: "random", stagger: 2, blend: "source-over", glow: false },
@@ -105,17 +105,17 @@ const PRESETS = {
 /* ---------------------------------------------------------------- state */
 function load() {
   try { if (location.hash.startsWith("#c=")) return JSON.parse(decodeURIComponent(location.hash.slice(3))); } catch (e) {}
-  try { const s = localStorage.getItem("pixcel.cfg"); if (s) return JSON.parse(s); } catch (e) {}
+  try { const s = localStorage.getItem("Pixell.cfg"); if (s) return JSON.parse(s); } catch (e) {}
   return {};
 }
 let cfg = Object.assign({}, D, EXTRA, load());
 delete cfg.host;
-const g = PixcelGalaxy($("cv"), engineOpts(cfg));
+const g = PixellGalaxy($("cv"), engineOpts(cfg));
 const stage = $("stage");
 stage.style.setProperty("--stage-bg", cfg.bg);
 
 function engineOpts(c) { const o = Object.assign({}, c); for (const k in EXTRA) delete o[k]; return o; }
-function save() { try { localStorage.setItem("pixcel.cfg", JSON.stringify(cfg)); } catch (e) {} }
+function save() { try { localStorage.setItem("Pixell.cfg", JSON.stringify(cfg)); } catch (e) {} }
 function changed() {   // only the keys that differ from the original
   const o = {};
   for (const k in cfg) if (k in D && JSON.stringify(cfg[k]) !== JSON.stringify(D[k])) o[k] = cfg[k];
@@ -199,7 +199,7 @@ $("b_random").onclick = () => {
   apply({
     from: pick(SHAPES), to: pick(SHAPES), arms: r(1, 6, 1), twist: r(1, 10, .1), scatter: r(.2, 1.4), radiusBias: r(.4, 1.6),
     diffRot: r(0, 3, .1), flatten: r(.35, 1), tilt: r(-1, 1), n: r(300, 2500, 10), speed: r(.002, .01, .0005),
-    stagger: r(0, 2), order: pick({ center: 1, edge: 1, random: 1, sweep: 1 }), palette: pick(PixcelGalaxy.palettes),
+    stagger: r(0, 2), order: pick({ center: 1, edge: 1, random: 1, sweep: 1 }), palette: pick(PixellGalaxy.palettes),
     colorMode: pick({ cycle: 1, random: 1, radius: 1, angle: 1 }), mouse: pick({ repel: 1, attract: 1, swirl: 1 }),
     trail: Math.random() < .3 ? r(.6, .92) : 0, trigger: "auto"
   });
@@ -209,14 +209,14 @@ $("b_shock").onclick = () => g.shock();
 $("b_png").onclick = () => {
   const c = $("cv"), t = document.createElement("canvas"); t.width = c.width; t.height = c.height;
   const x = t.getContext("2d"); x.fillStyle = cfg.bg; x.fillRect(0, 0, t.width, t.height); x.drawImage(c, 0, 0);
-  const a = document.createElement("a"); a.download = "pixcel-galaxy.png"; a.href = t.toDataURL("image/png"); a.click();
+  const a = document.createElement("a"); a.download = "Pixell-galaxy.png"; a.href = t.toDataURL("image/png"); a.click();
 };
 $("b_json").onclick = () => copy(JSON.stringify(changed(), null, 2), "تنظیمات (فقط مقادیر تغییرکرده) کپی شد");
 $("b_embed").onclick = () => copy(
 `<canvas id="galaxy" style="width:300px;height:300px"></canvas>
 <script src="galaxy.js"></script>
 <script>
-  PixcelGalaxy(document.getElementById("galaxy"), ${JSON.stringify(changed(), null, 2).replace(/\n/g, "\n  ")});
+  PixellGalaxy(document.getElementById("galaxy"), ${JSON.stringify(changed(), null, 2).replace(/\n/g, "\n  ")});
 </script>`, "کد استفاده کپی شد");
 $("b_link").onclick = () => copy(location.href.split("#")[0] + "#c=" + encodeURIComponent(JSON.stringify(changed())), "لینک با تنظیمات فعلی کپی شد");
 $("b_size").onclick = () => { stage.classList.toggle("small"); $("b_size").classList.toggle("primary"); };

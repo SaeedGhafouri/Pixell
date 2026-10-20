@@ -4,16 +4,12 @@
 
 ![Pixell playground preview](assets/preview.png)
 
-> **Preview image:** Add a screenshot of the playground at `assets/preview.png` before publishing. No preview image is included in the source yet.
-
 ## Features
 
 - Morph between geometric shapes, a spiral galaxy, text, and line-art portraits (including a human face and a cat face).
 - Choose from playground presets or adjust particle count, motion, colors, glow, trails, pointer effects, and morph behavior.
 - Export the current frame as PNG, copy modified settings as JSON, copy an embed snippet, or share a configuration URL.
 - Use `galaxy.js` independently of the playground. No build step or JavaScript package installation is required.
-
-> The playground UI and the in-app documentation are currently in Persian; this README is in English. The page stylesheet loads optional Google Fonts; the animation engine does not require them.
 
 ## Run locally
 

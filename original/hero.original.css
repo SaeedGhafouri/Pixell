@@ -1,0 +1,13 @@
+﻿/* VERBATIM COPY from _tsPro/static/ds.css - lines 328-339 (the hero box around the galaxy) */
+/* develop hero with the galaxy */
+.hero{display:flex;align-items:center;gap:var(--sp-5);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-4);border:1px solid var(--border);border-radius:14px;
+ background:linear-gradient(120deg,color-mix(in srgb,#1a73e8 14%,var(--glass)),var(--glass) 55%,color-mix(in srgb,#00c2ff 10%,var(--glass)));backdrop-filter:blur(14px);position:relative;overflow:hidden}
+.hero canvas{width:150px;height:150px;flex:none;cursor:crosshair;display:block}
+.hero-t{flex:1;min-width:0}
+.hero-t h1{font-size:24px;background:linear-gradient(90deg,#4285f4,#00c2ff,#7c4dff);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.hero-t p{margin:var(--sp-1) 0 var(--sp-3);color:var(--muted);line-height:1.8;min-height:3.6em;position:relative;padding-inline-start:16px}
+.hero-t p::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#00c2ff;box-shadow:0 0 8px #00c2ff;animation:pl 1.6s infinite}
+.hero-t p.typing::after{content:"▍";color:#4285f4;margin-inline-start:2px;animation:pl .7s infinite}
+.hero-item{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2)}
+.hero-item b{font-size:var(--fs-md);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+@media(max-width:760px){.hero{flex-direction:column;text-align:center}.hero-item{justify-content:center}}

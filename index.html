@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixcel Galaxy Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+ <div class="brand"><span class="grad">✦ Pixcel</span><small>آزمایشگاه کهکشان ذره‌ای (نسخه‌ی قابل‌تنظیم fxGalaxy از tsPro)</small></div>
+ <nav><a class="on" href="index.html">آزمایشگاه</a><a href="docs.html">مستندات</a><a href="example.html">نمونه‌ی ساده</a></nav>
+</header>
+
+<main class="lab">
+ <section class="stage" id="stage">
+  <canvas id="cv" aria-label="انیمیشن کهکشان ذره‌ای"></canvas>
+  <div class="hint" id="hint"></div>
+  <div class="stage-tools">
+   <button class="btn" id="b_size" title="نمایش در اندازه‌ی 150 پیکسلی tsPro">150px</button>
+   <button class="btn" id="b_full" title="تمام‌صفحه">⛶</button>
+  </div>
+  <div class="hud" id="hud"></div>
+ </section>
+
+ <aside class="panel" id="panel">
+  <h4>پیش‌تنظیم‌ها</h4>
+  <div class="presets" id="presets"></div>
+  <h4>عملیات</h4>
+  <div class="actions">
+   <button class="btn" id="b_reset">بازگشت به اصل</button>
+   <button class="btn" id="b_random">تصادفی 🎲</button>
+   <button class="btn" id="b_scramble">پخش‌کردن ذرات</button>
+   <button class="btn" id="b_shock">موج ضربه</button>
+   <button class="btn" id="b_png">ذخیره PNG</button>
+   <button class="btn" id="b_json">کپی تنظیمات JSON</button>
+   <button class="btn" id="b_embed">کپی کد استفاده</button>
+   <button class="btn" id="b_link">کپی لینک</button>
+  </div>
+  <div id="controls"></div>
+ </aside>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="galaxy.js"></script>
+<script src="playground.js"></script>
+</body>
+</html>

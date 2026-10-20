@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixcel Minimal Example</title>
+<link rel="stylesheet" href="style.css">
+<style>
+ .wrap{max-width:900px;margin:0 auto;padding:24px 16px}
+ /* the hero box, same idea as _tsPro/static/ds.css lines 328-339 */
+ .hero{display:flex;align-items:center;gap:24px;padding:16px 24px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(120deg,rgba(26,115,232,.14),rgba(12,17,32,.6) 55%,rgba(0,194,255,.1))}
+ .hero canvas{width:150px;height:150px;flex:none;cursor:crosshair;display:block}
+ .hero h1{font-size:24px;margin:0}
+ .hero p{color:var(--muted);margin:4px 0 12px}
+ .row{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px}
+ .row figure{margin:0;text-align:center;color:var(--muted);font-size:12.5px}
+ .row canvas{width:200px;height:200px;display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+ @media(max-width:600px){.hero{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="brand"><span class="grad">✦ Pixcel</span><small>نمونه‌ی ساده</small></div>
+ <nav><a href="index.html">آزمایشگاه</a><a href="docs.html">مستندات</a><a class="on" href="example.html">نمونه‌ی ساده</a></nav>
+</header>
+<div class="wrap">
+ <p>۱) همان چیزی که در صفحه‌ی Develop در tsPro هست: کهکشان ۱۵۰ پیکسلی داخل کادر، و کل کادر (host) ماوس را می‌گیرد.</p>
+ <div class="hero" id="hero">
+  <canvas id="g_hero" aria-hidden="true"></canvas>
+  <div>
+   <h1 class="grad">Develop</h1>
+   <p>ماوس را روی کادر ببرید. دکمه‌ی زیر کلاس <code>fx-ai</code> را روی body می‌گذارد، دقیقاً مثل وقتی AI در tsPro کار می‌کند.</p>
+   <button class="btn primary" id="ai">شبیه‌سازی کار AI</button>
+  </div>
+ </div>
+
+ <p style="margin-top:28px">۲) چند نمونه با کمترین کد:</p>
+ <div class="row">
+  <figure><canvas id="g1"></canvas>پیش‌فرض</figure>
+  <figure><canvas id="g2"></canvas>کره، با کلیک</figure>
+  <figure><canvas id="g3"></canvas>متن فارسی، خودکار</figure>
+ </div>
+ <pre dir="ltr" style="background:#080c18;border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:20px;overflow-x:auto">&lt;script src="galaxy.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  PixcelGalaxy(document.getElementById("g_hero"), {host: document.getElementById("hero")});
+  PixcelGalaxy(document.getElementById("g1"));
+  PixcelGalaxy(document.getElementById("g2"), {to: "sphere", n: 700, trigger: "click", palette: "aurora"});
+  PixcelGalaxy(document.getElementById("g3"), {to: "text", text: "سلام", n: 1200, trigger: "auto", palette: "nebula", order: "sweep"});
+&lt;/script&gt;</pre>
+</div>
+<script src="galaxy.js"></script>
+<script>
+  PixcelGalaxy(document.getElementById("g_hero"), {host: document.getElementById("hero")});
+  PixcelGalaxy(document.getElementById("g1"));
+  PixcelGalaxy(document.getElementById("g2"), {to: "sphere", n: 700, trigger: "click", palette: "aurora"});
+  PixcelGalaxy(document.getElementById("g3"), {to: "text", text: "سلام", n: 1200, trigger: "auto", palette: "nebula", order: "sweep"});
+  document.getElementById("ai").onclick = function () {
+    const on = document.body.classList.toggle("fx-ai");
+    this.textContent = on ? "توقف AI" : "شبیه‌سازی کار AI";
+  };
+</script>
+</body>
+</html>

@@ -4,6 +4,8 @@
 
 ![Pixell playground preview](assets/preview.png)
 
+Live lab: <https://pixell.codebeats.ir>.
+
 ## Features
 
 - Morph between geometric shapes, a spiral galaxy, text, and line-art portraits (including a human face and a cat face).

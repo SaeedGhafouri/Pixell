@@ -1,4 +1,4 @@
-/* Pixcel Galaxy - a standalone, configurable version of fxGalaxy from _tsPro/static/fx.js (lines 19-55).
+/* Pixcel Galaxy - a standalone, configurable version of fxGalaxy from the CodeBeats static/fx.js (lines 19-55).
    With the default options it draws exactly what the original draws; every hard-coded number became an option.
 
    Usage:
@@ -17,7 +17,7 @@ const TAU = Math.PI * 2;
 const GOLDEN = Math.PI * (3 - Math.sqrt(5));   // 2.39996 rad = 137.5 deg, the sunflower angle (the original writes 2.39996)
 
 const PALETTES = {
-  tspro:   ["#8ab4f8", "#4285f4", "#1a73e8", "#00c2ff", "#a5d8ff", "#7c9cff", "#c3e6ff", "#5e97f6"],   // the original PAL
+  codebeats: ["#8ab4f8", "#4285f4", "#1a73e8", "#00c2ff", "#a5d8ff", "#7c9cff", "#c3e6ff", "#5e97f6"],   // the original PAL
   nebula:  ["#c084fc", "#f472b6", "#818cf8", "#e879f9", "#a5b4fc", "#fbcfe8", "#7c3aed"],
   fire:    ["#ffd166", "#ff9f1c", "#ff6b35", "#ff4e00", "#ffb4a2", "#ffe8a3"],
   aurora:  ["#64ffda", "#00e5a0", "#00c2ff", "#7cffcb", "#4dd0e1", "#b2ff59"],
@@ -66,7 +66,7 @@ const DEFAULTS = {
   clickShock: false,    // a click sends a shock wave through the dots
   shockForce: 28,
   // colour and light
-  palette: "tspro",     // a PALETTES name or an array of colours
+  palette: "codebeats",     // a PALETTES name or an array of colours
   colorMode: "cycle",   // cycle | random | radius | angle                 (original: cycle, PAL[i % 8])
   blend: "lighter",     // canvas composite op for dots and glow           (original: lighter)
   glow: true, glowStrength: 1,
@@ -332,7 +332,7 @@ function PixcelGalaxy(cv, opts) {
 
   // values that only change when options change: palette, colour per dot, morph order key per dot
   function refresh() {
-    pal = Array.isArray(o.palette) ? o.palette : (PALETTES[o.palette] || PALETTES.tspro);
+    pal = Array.isArray(o.palette) ? o.palette : (PALETTES[o.palette] || PALETTES.codebeats);
     glowRGB = [0, 1, 2].map(i => hexRGB(pal[i % pal.length]));
     const B = shapes[o.to] || shapes.galaxy;
     for (const p of P) {

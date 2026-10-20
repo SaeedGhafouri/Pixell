@@ -1,4 +1,4 @@
-﻿/* VERBATIM COPY from _tsPro/static/fx.js - line 8 and lines 19-55 (read-only reference, not used by the playground) */
+﻿/* VERBATIM COPY from CodeBeats static/fx.js - line 8 and lines 19-55 (read-only reference, not used by the playground) */
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------------------------------------------------------------- galaxy */

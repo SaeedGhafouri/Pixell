@@ -14,7 +14,7 @@
 
 <article class="doc">
 <h1>کهکشان ذره‌ای: <span class="grad">چطور کار می‌کند؟</span></h1>
-<p class="lead">این انیمیشن در tsPro تابعی ۳۷ خطی به نام <code>fxGalaxy</code> است. چند صد نقطه، اول یک دایره‌ی آفتابگردانی می‌سازند. وقتی ماوس روی آن می‌رود (یا AI مشغول کار است)، از مرکز به بیرون به یک کهکشان مارپیچی چرخان تبدیل می‌شوند. این صفحه قدم‌به‌قدم ریاضی و کد آن را باز می‌کند. هر جا دمو هست، با اسلایدرهایش بازی کنید.</p>
+<p class="lead">این انیمیشن در CodeBeats تابعی ۳۷ خطی به نام <code>fxGalaxy</code> است. چند صد نقطه، اول یک دایره‌ی آفتابگردانی می‌سازند. وقتی ماوس روی آن می‌رود (یا AI مشغول کار است)، از مرکز به بیرون به یک کهکشان مارپیچی چرخان تبدیل می‌شوند. این صفحه قدم‌به‌قدم ریاضی و کد آن را باز می‌کند. هر جا دمو هست، با اسلایدرهایش بازی کنید.</p>
 
 <div class="toc">
  <a href="#src">۱. کد اصلی کجاست</a><br>
@@ -37,20 +37,20 @@
 <!-- ============================================================ -->
 <h2 id="src">۱. کد اصلی کجاست</h2>
 <table>
- <tr><th>فایل در tsPro</th><th>چه چیزی</th></tr>
+ <tr><th>فایل در CodeBeats</th><th>چه چیزی</th></tr>
  <tr><td><code>static/fx.js</code> خطوط ۱۹ تا ۵۵</td><td>خود تابع <code>window.fxGalaxy(canvas, options)</code> و پالت <code>PAL</code></td></tr>
  <tr><td><code>static/fx.js</code> خط ۸</td><td><code>reduce</code>: آیا کاربر در سیستم‌عامل «کاهش حرکت» را روشن کرده</td></tr>
  <tr><td><code>templates/index.html</code> خط ۲۹ و ۶۳۱</td><td>بوم ۱۵۰ پیکسلی در کادر Develop: <code>fxGalaxy(cv, {host: $("dv_hero")})</code></td></tr>
  <tr><td><code>static/ai.js</code> خط ۱۱۳ و ۱۱۴</td><td>صفحه‌ی خوش‌آمد پنل AI: <code>fxGalaxy(cv, {n: 260})</code></td></tr>
  <tr><td><code>static/ds.css</code> خطوط ۳۲۸ تا ۳۳۹</td><td>استایل کادر <code>.hero</code> و اندازه‌ی ۱۵۰×۱۵۰ بوم</td></tr>
 </table>
-<p>یک کپی دست‌نخورده از همین خطوط در <code>original/</code> گذاشته شده تا کنار این مستندات بخوانید. هیچ چیزی در tsPro تغییر نکرده است.</p>
+<p>یک کپی دست‌نخورده از همین خطوط در <code>original/</code> گذاشته شده تا کنار این مستندات بخوانید. هیچ چیزی در CodeBeats تغییر نکرده است.</p>
 
 <!-- ============================================================ -->
 <h2 id="files">۲. فایل‌های پوشه‌ی Pixcel</h2>
 <table>
  <tr><th>فایل</th><th>کار</th></tr>
- <tr><td><code>galaxy.js</code></td><td>موتور. همان الگوریتم اصلی، با این تفاوت که هر عدد ثابت یک گزینه شده و شکل‌های هندسی و چهره‌های خطی داخلی هم دارد. با تنظیمات پیش‌فرض دقیقاً همان خروجی tsPro را می‌دهد.</td></tr>
+ <tr><td><code>galaxy.js</code></td><td>موتور. همان الگوریتم اصلی، با این تفاوت که هر عدد ثابت یک گزینه شده و شکل‌های هندسی و چهره‌های خطی داخلی هم دارد. با تنظیمات پیش‌فرض دقیقاً همان خروجی CodeBeats را می‌دهد.</td></tr>
  <tr><td><code>index.html</code> + <code>playground.js</code></td><td>آزمایشگاه: صحنه‌ی بزرگ و پنل تنظیمات با پیش‌تنظیم‌ها، خروجی PNG/JSON/کد و لینک اشتراک</td></tr>
  <tr><td><code>docs.html</code></td><td>همین مستندات، با دموهای زنده</td></tr>
  <tr><td><code>example.html</code></td><td>کوتاه‌ترین کد استفاده و بازسازی کادر Develop</td></tr>
@@ -167,7 +167,7 @@ if (d2 < 3600) {                         <span class="c">// 3600 = 60²، یعن
 <ul>
  <li>مقایسه با <code>d2</code> به جای <code>d</code> یعنی برای نقطه‌های دور جذر گرفته نمی‌شود. این یک بهینه‌سازی رایج است.</li>
  <li><code>dx/d</code> و <code>dy/d</code> بردار واحد از ماوس به نقطه است و <code>f</code> طول هل. در Pixcel می‌توانید حالت را «جذب» (علامت منفی) یا «گرداب» (بردار عمود: <code>-dy, dx</code>) کنید.</li>
- <li><code>host</code>: در tsPro کل کادر Develop ماوس را می‌گیرد، نه فقط بوم کوچک. برای همین کهکشان قبل از رسیدن ماوس به آن بیدار می‌شود.</li>
+ <li><code>host</code>: در CodeBeats کل کادر Develop ماوس را می‌گیرد، نه فقط بوم کوچک. برای همین کهکشان قبل از رسیدن ماوس به آن بیدار می‌شود.</li>
 </ul>
 <div class="demo" id="d4"><canvas></canvas><div><div class="cap">ماوس را روی بوم حرکت دهید. «نرمی دنبال‌کردن» کم یعنی نقطه‌ها با تأخیر و کش‌دار برمی‌گردند.</div></div></div>
 
@@ -227,7 +227,7 @@ ctx.globalCompositeOperation = "lighter"</pre>
  <tr><td><code>mouse</code></td><td>repel</td><td><code>repel, attract, swirl, off</code></td></tr>
  <tr><td><code>mouseRadius</code>, <code>mouseForce</code></td><td>60, 14</td><td>شعاع و قدرت اثر ماوس (پیکسل)</td></tr>
  <tr><td><code>clickShock</code>, <code>shockForce</code></td><td>— (جدید)</td><td>موج ضربه با کلیک</td></tr>
- <tr><td><code>palette</code></td><td>tspro</td><td>نام پالت یا آرایه‌ای از رنگ‌ها، مثلاً <code>["#fff","#f0f"]</code></td></tr>
+ <tr><td><code>palette</code></td><td>codebeats</td><td>نام پالت یا آرایه‌ای از رنگ‌ها، مثلاً <code>["#fff","#f0f"]</code></td></tr>
  <tr><td><code>colorMode</code></td><td>cycle</td><td><code>cycle, random, radius, angle</code></td></tr>
  <tr><td><code>blend</code></td><td>lighter</td><td>هر <code>globalCompositeOperation</code> معتبر</td></tr>
  <tr><td><code>glow</code>, <code>glowStrength</code></td><td>true, 1</td><td>هاله‌ی مرکزی (رنگش از سه رنگ اول پالت)</td></tr>

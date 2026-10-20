@@ -1,4 +1,4 @@
-﻿/* VERBATIM COPY from _tsPro/static/ds.css - lines 328-339 (the hero box around the galaxy) */
+﻿/* VERBATIM COPY from CodeBeats static/ds.css - lines 328-339 (the hero box around the galaxy) */
 /* develop hero with the galaxy */
 .hero{display:flex;align-items:center;gap:var(--sp-5);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-4);border:1px solid var(--border);border-radius:14px;
  background:linear-gradient(120deg,color-mix(in srgb,#1a73e8 14%,var(--glass)),var(--glass) 55%,color-mix(in srgb,#00c2ff 10%,var(--glass)));backdrop-filter:blur(14px);position:relative;overflow:hidden}

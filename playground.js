@@ -51,7 +51,7 @@ const SCHEMA = [
   { k: "clickShock", t: "check", label: "موج ضربه با کلیک" },
   { k: "shockForce", t: "range", label: "قدرت موج", min: 0, max: 100, step: 1, show: c => c.clickShock },
   { sec: "رنگ و نور" },
-  { k: "palette", t: "select", label: "پالت رنگ", opts: { tspro: "آبی tsPro (اصلی)", nebula: "سحابی", fire: "آتش", aurora: "شفق", rainbow: "رنگین‌کمان", mono: "سفید" } },
+  { k: "palette", t: "select", label: "پالت رنگ", opts: { codebeats: "آبی CodeBeats (اصلی)", nebula: "سحابی", fire: "آتش", aurora: "شفق", rainbow: "رنگین‌کمان", mono: "سفید" } },
   { k: "colorMode", t: "select", label: "رنگ‌دهی", opts: { cycle: "چرخشی (اصلی)", random: "تصادفی", radius: "بر اساس فاصله", angle: "بر اساس زاویه" } },
   { k: "blend", t: "select", label: "ترکیب نور", opts: { lighter: "lighter (جمع نور، اصلی)", "source-over": "معمولی", screen: "screen", "color-dodge": "color-dodge", difference: "difference" } },
   { k: "glow", t: "check", label: "هاله‌ی مرکزی" },
@@ -65,12 +65,12 @@ const SCHEMA = [
 const EXTRA = { bg: "#05070f" };   // UI-only keys, not engine options
 
 const PRESETS = {
-  "اصلی tsPro": {},
+  "اصلی CodeBeats": {},
   "آندرومدا": { n: 2200, arms: 2, twist: 6.5, scatter: .55, radiusBias: .8, flatten: .42, tilt: -.6, diffRot: 2, palette: "nebula", colorMode: "radius", trigger: "auto", autoPeriod: 5, sizeMin: .3, sizeRange: 1.2 },
   "سیاه‌چاله": { n: 1600, from: "ring", to: "galaxy", arms: 5, twist: 10, scatter: .4, radiusBias: 1.4, diffRot: 3.5, flatten: .7, speed: .006, mouse: "swirl", mouseRadius: 140, mouseForce: 30, trail: .82, palette: "fire", colorMode: "radius", trigger: "always", glowStrength: .5 },
   "کره": { n: 1400, to: "sphere", tilt: -.35, palette: "aurora", colorMode: "angle", trigger: "auto", autoPeriod: 4, sizeMin: .4, sizeRange: 1.4, stagger: 1.2 },
   "قلب": { n: 900, to: "heart", palette: "nebula", colorMode: "random", trigger: "auto", autoPeriod: 3, order: "edge", stagger: 1.5, sizeMin: .6, clickShock: true },
-  "متن": { n: 2600, to: "text", text: "PIXCEL", palette: "tspro", trigger: "auto", autoPeriod: 4, order: "sweep", stagger: 1.4, sizeMin: .5, sizeRange: 1, mouseRadius: 80, mouseForce: 22, clickShock: true },
+  "متن": { n: 2600, to: "text", text: "PIXCEL", palette: "codebeats", trigger: "auto", autoPeriod: 4, order: "sweep", stagger: 1.4, sizeMin: .5, sizeRange: 1, mouseRadius: 80, mouseForce: 22, clickShock: true },
   "DNA": { n: 900, from: "sphere", to: "helix", palette: "rainbow", colorMode: "cycle", trigger: "auto", autoPeriod: 4, speed: .004, stagger: 1, order: "sweep" },
   "ستاره‌ی دنباله‌دار": { n: 700, from: "star", to: "galaxy", arms: 4, twist: 7, speed: .012, trail: .9, palette: "mono", colorMode: "random", trigger: "click", clickShock: true },
   "شبکه": { n: 900, from: "grid", to: "disc", palette: "aurora", colorMode: "radius", trigger: "auto", order: "random", stagger: 2, blend: "source-over", glow: false },
@@ -229,5 +229,5 @@ setInterval(() => {
 }, 120);
 
 sync();
-if (!Object.keys(changed()).length) markPreset("اصلی tsPro");
+if (!Object.keys(changed()).length) markPreset("اصلی CodeBeats");
 })();

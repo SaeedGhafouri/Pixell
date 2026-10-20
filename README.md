@@ -79,7 +79,7 @@ Pass these to `PixcelGalaxy(canvas, options)` or update them later using `galaxy
 | `trigger` | `"hover"` | Morph on `hover`, `click`, `auto`, `manual`, `always`, or `never`. |
 | `manual` | `0` | Morph amount from 0 (A) to 1 (B) when `trigger` is `"manual"`. |
 | `autoPeriod` | `4` | Seconds spent in each state when using `"auto"`. |
-| `palette` | `"tspro"` | `"tspro"`, `"nebula"`, `"fire"`, `"aurora"`, `"rainbow"`, `"mono"`, or an array of hex colors. |
+| `palette` | `"codebeats"` | `"codebeats"`, `"nebula"`, `"fire"`, `"aurora"`, `"rainbow"`, `"mono"`, or an array of hex colors. |
 | `mouse` | `"repel"` | Pointer interaction: `"repel"`, `"attract"`, `"swirl"`, or `"off"`. |
 | `radius` | `0.44` | Shape radius as a fraction of the smaller canvas dimension. |
 | `trail`, `glow` | `0`, `true` | Motion-trail strength and central glow toggle. |
@@ -143,7 +143,7 @@ The engine gives every particle stable random values, then calculates its coordi
 | `original/` | Original reference files, preserved for comparison. |
 | `serve.cmd` | Windows convenience script for the Python HTTP server. |
 
-The `original/` directory is a reference copy of the earlier `fxGalaxy` implementation from the tsPro project. The standalone engine adds configuration and shapes without changing those reference files.
+The `original/` directory is a reference copy of the earlier `fxGalaxy` implementation from the CodeBeats project. The standalone engine adds configuration and shapes without changing those reference files.
 
 ## Publish as a static site
 
